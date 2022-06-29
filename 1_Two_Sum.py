@@ -9,6 +9,7 @@ and you may not use the same element twice.
 
 You can return the answer in any order.
 """
+from typing import List
 
 
 class Solution:
@@ -16,15 +17,20 @@ class Solution:
 
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         """Two sum function."""
-        print("two sum...")
+        for i in range(0, len(nums)):
+            for j in range(len(nums)-1, 0, -1):
+                if nums[i] + nums[j] == target and not i == j:
+                    return [i, j]
 
 
-    def main(self):
-        """Main."""
-        self.nums = [1, 2, 3, 4]
-        self.target = 3
-        self.returned_list = twoSum(selnums, target)
+def main():
+    """Solution."""
+    s = Solution()
+    nums = [4, 2, 3, 11, 9, 1]
+    target = 3
+    returned_list = s.twoSum(nums, target)
+    print(returned_list)
 
 
 if __name__ == "__main__":
-    Solution.main()
+    main()
