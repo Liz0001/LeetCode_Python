@@ -46,8 +46,8 @@ def main():
     s = Solution()
     nums = [4, 2, 3, 11, 9, 1]
     target = 3
-    returned_list = s.twoSum(nums, target)
-    print(returned_list)
+    answer = s.twoSum(nums, target)
+    print(answer)
 
 
 if __name__ == "__main__":
