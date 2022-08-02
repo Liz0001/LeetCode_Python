@@ -15,10 +15,6 @@ reconstruct and return the original sentence.
 """
 
 
-from hashlib import new
-from tkinter import W
-
-
 class Solution:
     """Sorting the Sentence Class."""
 
