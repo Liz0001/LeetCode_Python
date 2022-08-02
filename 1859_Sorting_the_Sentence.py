@@ -26,13 +26,9 @@ class Solution:
         """Sorting the Sentence Function."""
         words_list = s.split()
         new_s = [""] * len(words_list)
-        print(new_s)
         for word in words_list:
             place = int(word[-1])-1
-            # new_s.insert(place, word[:-1])
             new_s[place] = word[:-1]
-        # print(words_list[0][-1])
-        print(new_s)
         return " ".join(new_s)
 
 
