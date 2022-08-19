@@ -37,7 +37,6 @@ class Solution:
         return maxi
 
 
-
 def main():
     """Solution."""
     s = Solution()
