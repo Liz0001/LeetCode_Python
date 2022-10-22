@@ -43,10 +43,10 @@ class Solution:
 
 def main():
     """Solution."""
-    s = Solution()
+    solution = Solution()
     nums = [4, 2, 3, 11, 9, 1]
     target = 3
-    answer = s.twoSum(nums, target)
+    answer = solution.twoSum(nums, target)
     print(answer)
 
 
