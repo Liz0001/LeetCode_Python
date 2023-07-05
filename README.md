@@ -1,6 +1,7 @@
-LeetCode Python 
-===============
+# LeetCode Python
 
-Hopefully solved ones only :D
+====================
 
-Starting with 'easy'
+Only solved ones, using Python
+
+Mainly Easy level, some also Medium level
