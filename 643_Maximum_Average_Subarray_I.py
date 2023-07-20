@@ -3,7 +3,14 @@ from typing import List
 
 class Solution:        
     def findMaxAverage(self, nums: List[int], k: int) -> float:
-        i, j, res = 0, (len(nums)-k), []
+        atm = sum(nums[:k])
+        res = atm
+        for i in range(k, len(nums)):
+            atm += nums[i]
+            atm -= nums[i-k]
+            res = max(res, atm)
+        
+        return res/k
 
         while i <= j:
             res.append(sum(nums[i:i+k]))
