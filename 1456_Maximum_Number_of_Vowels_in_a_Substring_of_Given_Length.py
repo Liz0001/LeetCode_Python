@@ -1,11 +1,10 @@
-import numpy
 
 class Solution:
     def maxVowels(self, s: str, k: int) -> int:
-        vowels = ['a', 'e', 'i', 'o', 'u']
+        vowels = {'a', 'e', 'i', 'o', 'u'}
         ss = list(s)
         n = len(ss)
-        res = ((numpy.isin(ss[:k], vowels)) == True).sum()
+        res = len([1 for x in ss[:k] if x in vowels])
         most = res
         if res == k:
             return k
