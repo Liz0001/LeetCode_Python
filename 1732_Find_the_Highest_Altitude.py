@@ -4,8 +4,8 @@ from typing import List
 class Solution:
     def largestAltitude(self, gain: List[int]) -> int:
         current, highest  = 0, 0
-        for i in range(len(gain)):
-            current += gain[i]
+        for i in gain:
+            current += i
             highest = max(highest, current)
         
         return highest
