@@ -3,10 +3,10 @@ import unittest
 
 class Solution:
     def removeStars(self, s: str) -> str:
-        ss = list(s)
+        # ss = list(s)
         stack = []
         mem = 0
-        for i in ss:
+        for i in s:
             if i == '*' and len(stack) > 0:
                 stack.pop()
             elif i == '*' and len(stack) == 0:
