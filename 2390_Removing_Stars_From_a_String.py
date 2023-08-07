@@ -3,7 +3,6 @@ import unittest
 
 class Solution:
     def removeStars(self, s: str) -> str:
-        # ss = list(s)
         stack = []
         mem = 0
         for i in s:
