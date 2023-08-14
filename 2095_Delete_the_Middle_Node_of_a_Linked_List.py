@@ -10,6 +10,11 @@ class ListNode:
 
 class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+
+        if head.next is None:
+            head = None
+            return None
+        
         count = 0
         middle_step = 0
         middle = head
@@ -19,9 +24,6 @@ class Solution:
             head = head.next
 
         head = middle
-        if count == 1:
-            head = None
-            return None
 
         while middle:
             middle_step += 1
@@ -41,7 +43,6 @@ class TestSolution(unittest.TestCase):
 
     def test_deleteMiddle(self):
         sol = Solution()
-        # head = [1,3,4,7,1,2,6]
         head = ListNode(1)
         ln2 = ListNode(3)
         ln3 = ListNode(4)
@@ -58,10 +59,41 @@ class TestSolution(unittest.TestCase):
         exp =  [1,3,4,1,2,6]
         out = sol.deleteMiddle(head)
         i = 0
-        while out.next is not None:
+        while out:
             self.assertEqual(out.val, exp[i])
             i+=1
             out = out.next
+
+        head = ListNode(1)
+        ln2 = ListNode(2)
+        ln3 = ListNode(3)
+        ln4 = ListNode(4)
+        head.next = ln2
+        ln2.next = ln3
+        ln3.next = ln4
+        exp =  [1,2,4]
+        out = sol.deleteMiddle(head)
+        i = 0
+        while out:
+            self.assertEqual(out.val, exp[i])
+            i+=1
+            out = out.next
+
+        head = ListNode(2)
+        ln2 = ListNode(1)
+        head.next = ln2
+        exp =  [2]
+        out = sol.deleteMiddle(head)
+        i = 0
+        while out:
+            self.assertEqual(out.val, exp[i])
+            i+=1
+            out = out.next
+
+        head = ListNode(1)
+        exp =  None
+        out = sol.deleteMiddle(head)
+        self.assertEqual(out, exp)
 
 
 if __name__ == '__main__':
