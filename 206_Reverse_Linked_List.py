@@ -53,7 +53,6 @@ class TestSolution(unittest.TestCase):
             reversed_list.append(out.val)
             out = out.next
 
-        print("ans:", reversed_list)
         self.assertEqual(reversed_list, exp)
 
 
