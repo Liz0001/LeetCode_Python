@@ -18,12 +18,14 @@ class Solution:
             heads.append(head.val)
             head = head.next
         
-        n = (len(heads)+1)//2
-        for j in range(n):
-            front = heads.pop(0)
-            back = heads.pop()
-            if front+back > max_sum:
-                max_sum = front+back
+        j = len(heads)-1
+        n = (j+1)//2
+        print(j, n)
+        for i in range(n):
+            # front = heads.pop(0)
+            # back = heads.pop()
+            max_sum = max(max_sum, (heads[i]+heads[j]))
+            j -= 1
         
         print(max_sum)
         return max_sum
