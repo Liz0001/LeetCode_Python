@@ -33,10 +33,10 @@ class Solution:
             self.get_depths(root.right)
             self.depth -= 1
             
-        if root.right is None and root.left is None:
-            self.d = max(self.d, self.depth)
+        # if root.right is None and root.left is None:
+        self.d = max(self.d, self.depth)
         
-        return self.depth
+        # return self.depth
 
 
 class TestSolution(unittest.TestCase):
