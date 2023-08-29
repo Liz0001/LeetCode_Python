@@ -15,13 +15,11 @@ class Solution:
         self.ts = targetSum
         self.count = 0
         
-        # print(stack)
         while stack:
             top = stack.pop()
             if top:
                 stack.insert(0, top.left)
                 stack.insert(0, top.right)
-        
             self.dfs(top, 0)
     
         print("Count:", self.count)
@@ -38,9 +36,6 @@ class Solution:
         
         self.dfs(node.left, summa)
         self.dfs(node.right, summa)
-        
-
-
 
 
 class SolutionTest(unittest.TestCase):
@@ -69,7 +64,7 @@ class SolutionTest(unittest.TestCase):
         targetSum = 8
         exp = 3
         out = sol.pathSum(root, targetSum)
-        # self.assertEqual(exp, out)
+        self.assertEqual(exp, out)
         
         root = TreeNode(1)
         n2 = TreeNode(-2)        
@@ -86,8 +81,8 @@ class SolutionTest(unittest.TestCase):
         n3.left = n6
         targetSum = 3
         exp = 1
-        # out = sol.pathSum(root, targetSum)
-        # self.assertEqual(exp, out)
+        out = sol.pathSum(root, targetSum)
+        self.assertEqual(exp, out)
 
         root = TreeNode(0)
         n2 = TreeNode(1)        
@@ -96,8 +91,8 @@ class SolutionTest(unittest.TestCase):
         root.right = n3
         targetSum = 1
         exp = 4
-        # out = sol.pathSum(root, targetSum)
-        # self.assertEqual(exp, out)
+        out = sol.pathSum(root, targetSum)
+        self.assertEqual(exp, out)
         
         root = TreeNode(0)
         n2 = TreeNode(1)        
@@ -106,16 +101,16 @@ class SolutionTest(unittest.TestCase):
         root.right = n3
         targetSum = 0
         exp = 1
-        # out = sol.pathSum(root, targetSum)
-        # self.assertEqual(exp, out)
+        out = sol.pathSum(root, targetSum)
+        self.assertEqual(exp, out)
         
         root = TreeNode(-2)
         n2 = TreeNode(-3)        
         root.right = n2
         targetSum = -3
         exp = 1
-        # out = sol.pathSum(root, targetSum)
-        # self.assertEqual(exp, out)
+        out = sol.pathSum(root, targetSum)
+        self.assertEqual(exp, out)
         
         root = TreeNode(1)
         n2 = TreeNode(0)        
@@ -148,8 +143,8 @@ class SolutionTest(unittest.TestCase):
         n7.right = n15
         targetSum = 2
         exp = 13
-        # out = sol.pathSum(root, targetSum)
-        # self.assertEqual(out, exp)
+        out = sol.pathSum(root, targetSum)
+        self.assertEqual(out, exp)
 
 
 if __name__ == '__main__':
