@@ -21,6 +21,8 @@ class Solution:
         print(self.depth)
         return 0
     
+    
+    
     def dfs(self, node):
         
         self.d += 1
