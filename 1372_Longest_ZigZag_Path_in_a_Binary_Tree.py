@@ -12,36 +12,34 @@ class TreeNode:
 class Solution:
 
     def longestZigZag(self, root: Optional[TreeNode]) -> int:
-        stack = [root]
         self.depth = 0
-        
-        while stack:
-            top = stack.pop()
-            if top:
-                stack.insert(0, top.left)
-                stack.insert(0, top.right)
-            
-            self.dfs(top, 'L', -1)
-            self.dfs(top, 'R', -1)
-            
+        self.dfs(root, [(0, 'L')])
+        self.dfs(root, [(0, 'R')])
         # print("Depth:", self.depth)
         return self.depth
     
     
-    def dfs(self, node, direction, count):
-        if node is None:
-            return
+    def dfs(self, node, path):
         
-        count += 1
-        self.depth = max(count, self.depth)
+        self.depth = max(path[-1][0], self.depth)
         
-        if direction == 'R':
-            self.dfs(node.left, 'L', count)
-            
-        if direction == 'L':
-            self.dfs(node.right, 'R', count)
+        # print(path, "  ---", node.val)
+        if node.left:
+            if path[-1][1] == 'L':
+                path.append((path[-1][0]+1, 'R'))
+            else:
+                path.append((1, 'R'))
+            self.dfs(node.left, path)
 
+        if node.right:
+            if path[-1][1] == 'R':
+                path.append((path[-1][0]+1, 'L'))
+            else:
+                path.append((1, 'L'))
+            self.dfs(node.right, path)
         
+        path.pop()
+
 
 class TestSolution(unittest.TestCase):
     """1372. Longest ZigZag Path in a Binary Tree."""
@@ -88,11 +86,11 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(out, exp)
         
         root = TreeNode(1)
-        n2 = TreeNode(1)
+        n2 = TreeNode(2)
         n3 = TreeNode(1)
-        n4 = TreeNode(1)
-        n5 = TreeNode(1)
-        n6 = TreeNode(1)
+        n4 = TreeNode(3)
+        n5 = TreeNode(4)
+        n6 = TreeNode(5)
         n7 = TreeNode(1)
         root.left = n2
         root.right = n3
@@ -101,7 +99,7 @@ class TestSolution(unittest.TestCase):
         n4.right = n6
         n5.right = n7
         exp = 4
-        out  = sol.longestZigZag(root)
+        out = sol.longestZigZag(root)
         self.assertEqual(out, exp)
 
         root = TreeNode(1)
