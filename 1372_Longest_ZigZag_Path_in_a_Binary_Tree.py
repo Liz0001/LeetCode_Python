@@ -23,7 +23,6 @@ class Solution:
         
         self.depth = max(path[-1][0], self.depth)
         
-        # print(path, "  ---", node.val)
         if node.left:
             if path[-1][1] == 'L':
                 path.append((path[-1][0]+1, 'R'))
