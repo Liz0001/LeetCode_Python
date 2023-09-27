@@ -58,7 +58,6 @@ class Solution:
                 queue.append(popped.right)
 
 
-
 class TestSolution(unittest.TestCase):
     """199. Binary Tree Right Side View."""
 
