@@ -14,7 +14,7 @@ class Solution:
         self.tree_levels = self.map_the_tree_level(root)
         self.level_sum = {}
         self.dfs(root, [])
-        print(self.level_sum)
+        # print(self.level_sum)
         return max(self.level_sum.items(), key=operator.itemgetter(1))[0]
        
         
@@ -62,8 +62,6 @@ class TestSolution(unittest.TestCase):
     def test_maxLevelSum(self):
         sol = Solution()
 
-        # Input: root = [1,7,0,7,-8,null,null]
-        # Output: 2
         n1 = TreeNode(1)
         n2 = TreeNode(7)
         n3 = TreeNode(0)
@@ -77,8 +75,6 @@ class TestSolution(unittest.TestCase):
         out = sol.maxLevelSum(n1)
         self.assertEqual(out, exp)
 
-        # Input: root = [989,null,10250,98693,-89388,null,null,null,-32127]
-        # Output: 2
         n1 = TreeNode(989)
         n2 = TreeNode(10250)
         n3 = TreeNode(98693)
@@ -90,7 +86,7 @@ class TestSolution(unittest.TestCase):
         n4.right = n5
         exp = 2
         out = sol.maxLevelSum(n1)
-        # self.assertEqual(out, exp)
+        self.assertEqual(out, exp)
         
 
 if __name__ == '__main__':
