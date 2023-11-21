@@ -2,7 +2,7 @@ import unittest
 
 
 class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
+    def __init__(self, val=None, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
@@ -12,55 +12,42 @@ class Solution:
     def deleteNode(self, root: ['TreeNode'], key: int) -> ['TreeNode']:
         if root is None:
             return None
-        
-        print(root.val)
-        prev = root
+    
         if root.val == key:
             print("Found, now lets remove:", key)
-            self.delNode(root, key, prev)
+
+            if root.right is None and root.left is None:
+                root = None
+                return None
+                
+            elif root.right is None:
+                pass
+                
+            elif root.left is None:
+                pass
+            
+            else:
+                pass
+            
+       
         
         elif root.val < key:
-            self.deleteNode(root.right, key)
+            root.right = self.deleteNode(root.right, key)
         elif root.val > key:
-            self.deleteNode(root.left, key)
+            root.left = self.deleteNode(root.left, key)
+ 
+            
         
         return root
-
-
-    def delNode(self, curr, val, prev):
-        # case 0 - root
-        # if prev == None:
-            
-        
-        # case 1 - no child - leaf
-        if curr.right is None and curr.left is None:
-            if prev.right is not None and prev.right == val:
-                prev.right = None
-            elif prev.left == val:
-                prev.left == None
-            
-        # case 2 - 1 child - ??
-        # elif curr.right is None or curr.left is None:
-        #     if prev.right is not None and prev.right == val:
-        #         if curr.right is not None:
-        #             prev.right = curr.right
-        #         elif curr.left is not None:
-        #             prev.right = curr.left
-        #     elif prev.left is not None and prev.left == val:
-        #         if curr.right is not None:
-        #             prev.right = curr.right
-        #         elif curr.left is not None:
-        #             prev.right = curr.left
-        #         prev.left == None
-        
-        
-        # case 3 - 2 children - ??
-        # if node.right and :
-        #     pass
+    
+    
+ 
 
     def test_bst(self, root, key):
         if root is None:
             return None
+        
+        print("Node ", root.val)
         if root.val == key:
             print("Testing failed:", key, 'found')
         
@@ -89,7 +76,8 @@ class TestSolution(unittest.TestCase):
         n2.left = n4
         n2.right = n5
         n3.right = n6
-        key = 3
+        # key = 3
+        key = 6
         exp = n1
         out = sol.deleteNode(n1, key)
         print("")
