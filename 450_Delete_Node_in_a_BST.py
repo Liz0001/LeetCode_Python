@@ -21,10 +21,10 @@ class Solution:
                 return None
                 
             elif root.right is None:
-                pass
+                return root.left
                 
             elif root.left is None:
-                pass
+                return root.right
             
             else:
                 pass
