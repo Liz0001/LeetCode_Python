@@ -42,7 +42,7 @@ class Solution:
 class TestSolution(unittest.TestCase):
     """450. Delete Node in a BST."""
 
-    def test_(self):
+    def test_deleteNode(self):
         sol = Solution()
 
         n1 = TreeNode(5)
