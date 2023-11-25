@@ -2,7 +2,7 @@ import unittest
 
 
 class TreeNode:
-    def __init__(self, val=None, left=None, right=None):
+    def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
@@ -13,59 +13,30 @@ class Solution:
         if root is None:
             return None
 
-        if root.val == key:
-            if root.right is None and root.left is None:
-                return None
-            elif root.right is None:
+        if root.val < key:
+            root.right = self.deleteNode(root.right, key)
+            
+        elif root.val > key:
+            root.left = self.deleteNode(root.left, key) 
+        
+        else:
+            if root.right is None:
                 return root.left
             elif root.left is None:
                 return root.right
             else:
-                return self.find_min(root.right)
-            
-            
-            
-        elif root.val < key:
-            node = self.deleteNode(root.right, key)
-            if type(node) == int:
-                root.val = node
-                key = node
-                self.deleteNode(root.right, key)
-            else:
-                root.right = node
-        
-        elif root.val > key:
-            node = self.deleteNode(root.left, key)
-            if type(node) == int:
-                root.val = node
-                key = node
-                self.deleteNode(root.left, key)
-            else:
-                root.left = node
+                m = self.find_min(root.right)
+                root.val = m
+                root.right = self.deleteNode(root.right, m)
+                return root
             
         return root
-    
+
 
     def find_min(self, root):
-        if root is None:
-            return None
-        
         while root.left is not None:
             root = root.left
-        
         return root.val
-    
-    
-    def test_bst(self, root, key):
-        if root is None:
-            return None
-        print(root.val)
-        if root.val == key:
-            print("Testing failed:", key, 'found')
-        elif root.val < key:
-            self.test_bst(root.right, key)
-        elif root.val > key:
-            self.test_bst(root.left, key)
         
 
 class TestSolution(unittest.TestCase):
@@ -88,7 +59,6 @@ class TestSolution(unittest.TestCase):
         key = 3
         exp = n1
         out = sol.deleteNode(n1, key)
-        sol.test_bst(n1, key)
         self.assertEqual(exp, out)
 
         n1 = TreeNode(5)
