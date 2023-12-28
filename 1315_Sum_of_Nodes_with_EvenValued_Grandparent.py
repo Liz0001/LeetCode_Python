@@ -14,9 +14,8 @@ class Solution:
         self.child_to_add = []
         self.dfs(root, root)
         return self.summ
-        
-        
-        
+  
+   
     def dfs(self, node, parent):
         if node is None:
             return
