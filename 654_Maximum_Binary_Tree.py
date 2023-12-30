@@ -33,7 +33,6 @@ class Solution:
             
         return node
         
-# 96.66%
 
 def tree_to_list(root):
     if not root:
